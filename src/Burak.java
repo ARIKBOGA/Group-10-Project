@@ -26,6 +26,11 @@ class Employee implements Runnable {
     public synchronized void doWork(Work work) {
 
         while (work.getAmount() > 0) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             work.setAmount(work.getAmount() - 1);
             System.out.println(this.getName() + "-> Remaining work: " + work.getAmount());
         }
@@ -44,11 +49,11 @@ class Work {
         this.amount = amount;
     }
 
-    public double getAmount() {
+    public synchronized double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public synchronized void setAmount(double amount) {
         this.amount = amount;
     }
 }
