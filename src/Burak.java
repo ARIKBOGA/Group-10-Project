@@ -19,17 +19,13 @@ class Employee implements Runnable {
 
     @Override
     public void run() {
-        run(work);
+        doWork(work);
     }
 
-    public void run(Work work) {
+
+    public synchronized void doWork(Work work) {
 
         while (work.getAmount() > 0) {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
             work.setAmount(work.getAmount() - 1);
             System.out.println(this.getName() + "-> Remaining work: " + work.getAmount());
         }
@@ -57,7 +53,7 @@ class Work {
     }
 }
 
-class  Main {
+class Main {
     public static void main(String[] args) {
 
         Employee e1 = new Employee("E-1");
