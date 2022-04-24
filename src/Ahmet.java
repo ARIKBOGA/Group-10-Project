@@ -9,7 +9,7 @@ public class Ahmet {
 
         System.out.println("Hello world");
 
-        System.out.println("Were now collaborating ");
+        System.out.println("We are now collaborating ");
 
         // first change has been made.
 
@@ -24,12 +24,14 @@ public class Ahmet {
 
         projectMembers[0] = member1;
 
+        System.out.println(Arrays.toString(projectMembers));
 
         collaborate(member1, projectName);
 
 
     }
-        // first method has been created
+
+    // first method has been created
     public static void collaborate(String name, String project) {
         System.out.println(name + " is collaborating, on the " + project);
     }
